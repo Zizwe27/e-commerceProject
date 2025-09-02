@@ -1,0 +1,167 @@
+{
+  "products": [
+    {
+      "id": "prod_1",
+      "title": "Gula-brand Smartwatch",
+      "description": "Stay connected and track your fitness goals with the Gula-brand smartwatch. Featuring a vibrant display and long-lasting battery.",
+      "slug": "gula-smartwatch",
+      "category_id": "cat_1",
+      "status": "published",
+      "images": [
+        "https://placehold.co/600x600/000000/FFFFFF?text=Smartwatch+Front",
+        "https://placehold.co/600x600/000000/FFFFFF?text=Smartwatch+Side"
+      ],
+      "price": 199.99,
+      "rating": 4.5,
+      "review_count": 87
+    },
+    {
+      "id": "prod_2",
+      "title": "Ergonomic Mechanical Keyboard",
+      "description": "A high-quality mechanical keyboard designed for comfort and precision, perfect for both gaming and professional work.",
+      "slug": "ergonomic-mechanical-keyboard",
+      "category_id": "cat_2",
+      "status": "published",
+      "images": [
+        "https://placehold.co/600x600/000000/FFFFFF?text=Keyboard+View+1",
+        "https://placehold.co/600x600/000000/FFFFFF?text=Keyboard+View+2"
+      ],
+      "price": 129.50,
+      "rating": 4.8,
+      "review_count": 154
+    },
+    {
+      "id": "prod_3",
+      "title": "Wireless Noise-Cancelling Headphones",
+      "description": "Immerse yourself in crystal-clear audio with these wireless headphones. Active noise cancellation blocks out distractions.",
+      "slug": "wireless-noise-cancelling-headphones",
+      "category_id": "cat_1",
+      "status": "published",
+      "images": [
+        "https://placehold.co/600x600/000000/FFFFFF?text=Headphones+Front",
+        "https://placehold.co/600x600/000000/FFFFFF?text=Headphones+Case"
+      ],
+      "price": 249.00,
+      "rating": 4.2,
+      "review_count": 210
+    },
+    {
+      "id": "prod_4",
+      "title": "4K Ultra HD Monitor",
+      "description": "Experience stunning visuals with this 27-inch 4K monitor. Perfect for designers, gamers, and anyone who appreciates a sharp display.",
+      "slug": "4k-ultra-hd-monitor",
+      "category_id": "cat_2",
+      "status": "published",
+      "images": [
+        "https://placehold.co/600x600/000000/FFFFFF?text=4K+Monitor+Screen",
+        "https://placehold.co/600x600/000000/FFFFFF?text=4K+Monitor+Back"
+      ],
+      "price": 399.99,
+      "compare_at_price": 449.99,
+      "rating": 4.7,
+      "review_count": 95
+    },
+    {
+      "id": "prod_5",
+      "title": "Lightweight Backpack",
+      "description": "A durable and lightweight backpack with multiple compartments, ideal for daily commutes or weekend trips.",
+      "slug": "lightweight-backpack",
+      "category_id": "cat_3",
+      "status": "published",
+      "images": [
+        "https://placehold.co/600x600/000000/FFFFFF?text=Backpack+Front",
+        "https://placehold.co/600x600/000000/FFFFFF?text=Backpack+Open"
+      ],
+      "price": 59.99,
+      "rating": 4.6,
+      "review_count": 68
+    },
+    {
+      "id": "prod_6",
+      "title": "Portable Espresso Maker",
+      "description": "Brew your favorite espresso on the go with this compact and easy-to-use portable maker. No batteries required.",
+      "slug": "portable-espresso-maker",
+      "category_id": "cat_3",
+      "status": "published",
+      "images": [
+        "https://placehold.co/600x600/000000/FFFFFF?text=Espresso+Maker+Main",
+        "https://placehold.co/600x600/000000/FFFFFF?text=Espresso+Maker+Side"
+      ],
+      "price": 45.00,
+      "compare_at_price": 50.00,
+      "rating": 4.4,
+      "review_count": 112
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_1",
+      "name": "Electronics",
+      "slug": "electronics",
+      "parent_id": null
+    },
+    {
+      "id": "cat_2",
+      "name": "Computers",
+      "slug": "computers",
+      "parent_id": "cat_1"
+    },
+    {
+      "id": "cat_3",
+      "name": "Travel",
+      "slug": "travel",
+      "parent_id": null
+    }
+  ],
+  "inventory": [
+    {
+      "product_id": "prod_1",
+      "sku": "gula-watch-black-small",
+      "attributes": { "color": "black", "size": "small" },
+      "inventory_count": 50,
+      "price": 199.99
+    },
+    {
+      "product_id": "prod_1",
+      "sku": "gula-watch-silver-large",
+      "attributes": { "color": "silver", "size": "large" },
+      "inventory_count": 20,
+      "price": 209.99
+    },
+    {
+      "product_id": "prod_2",
+      "sku": "keyboard-mechanical-blue-switch",
+      "attributes": { "switch_type": "blue" },
+      "inventory_count": 100,
+      "price": 129.50
+    },
+    {
+      "product_id": "prod_3",
+      "sku": "headphones-nc-black",
+      "attributes": { "color": "black" },
+      "inventory_count": 75,
+      "price": 249.00
+  },
+    {
+      "product_id": "prod_4",
+      "sku": "monitor-4k-27inch",
+      "attributes": { "size": "27-inch" },
+      "inventory_count": 40,
+      "price": 399.99
+    },
+    {
+      "product_id": "prod_5",
+      "sku": "backpack-lightweight-black",
+      "attributes": { "color": "black" },
+      "inventory_count": 150,
+      "price": 59.99
+    },
+    {
+      "product_id": "prod_6",
+      "sku": "espresso-maker-portable",
+      "attributes": {},
+      "inventory_count": 80,
+      "price": 45.00
+    }
+  ]
+}
