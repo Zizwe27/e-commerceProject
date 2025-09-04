@@ -1,0 +1,37 @@
+{
+    "name": "Activity",
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "enum": [
+          "order",
+          "message",
+          "shipment",
+          "stock_update"
+        ],
+        "description": "Activity type"
+      },
+      "title": {
+        "type": "string",
+        "description": "Activity title"
+      },
+      "description": {
+        "type": "string",
+        "description": "Activity description"
+      },
+      "related_id": {
+        "type": "string",
+        "description": "Related entity ID"
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time",
+        "description": "When the activity occurred"
+      }
+    },
+    "required": [
+      "type",
+      "title"
+    ]
+  }

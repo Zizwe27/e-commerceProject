@@ -1,0 +1,75 @@
+{
+    "name": "Product",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Product name"
+      },
+      "sku": {
+        "type": "string",
+        "description": "Stock Keeping Unit"
+      },
+      "image_url": {
+        "type": "string",
+        "description": "URL of the product image"
+      },
+      "price": {
+        "type": "number",
+        "description": "Product price"
+      },
+      "stock_quantity": {
+        "type": "integer",
+        "description": "Current stock quantity"
+      },
+      "low_stock_threshold": {
+        "type": "integer",
+        "default": 10,
+        "description": "Alert when stock falls below this number"
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "electronics",
+          "clothing",
+          "accessories",
+          "home",
+          "books",
+          "gadgets",
+          "furniture",
+          "outdoor",
+          "lighting",
+          "kitchenware",
+          "toys"
+        ],
+        "description": "Product category"
+      },
+      "sales_count": {
+        "type": "integer",
+        "default": 0,
+        "description": "Total units sold"
+      },
+      "revenue": {
+        "type": "number",
+        "default": 0,
+        "description": "Total revenue from this product"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "inactive",
+          "out_of_stock",
+          "low_stock"
+        ],
+        "default": "active",
+        "description": "Product status"
+      }
+    },
+    "required": [
+      "name",
+      "price",
+      "stock_quantity",
+      "sku"
+    ]
+  }

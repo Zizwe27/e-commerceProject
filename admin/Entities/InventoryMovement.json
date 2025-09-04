@@ -1,0 +1,38 @@
+{
+    "name": "InventoryMovement",
+    "type": "object",
+    "properties": {
+      "product_name": {
+        "type": "string"
+      },
+      "product_id": {
+        "type": "string"
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "change_type": {
+        "type": "string",
+        "enum": [
+          "added",
+          "sold",
+          "adjusted",
+          "returned"
+        ]
+      },
+      "quantity_change": {
+        "type": "integer"
+      },
+      "reason": {
+        "type": "string",
+        "description": "Reason for the inventory change"
+      }
+    },
+    "required": [
+      "product_name",
+      "timestamp",
+      "change_type",
+      "quantity_change"
+    ]
+  }

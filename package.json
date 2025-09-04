@@ -1,0 +1,56 @@
+{
+  "name": "e-commerce-platform",
+  "version": "1.0.0",
+  "description": "Full-stack e-commerce platform with admin dashboard, customer frontend, and scalable backend",
+  "private": true,
+  "workspaces": [
+    "admin",
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:admin\" \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:admin": "cd admin && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "npm run build:admin && npm run build:frontend && npm run build:backend",
+    "build:admin": "cd admin && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "start": "concurrently \"npm run start:admin\" \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:admin": "cd admin && npm run start",
+    "start:frontend": "cd frontend && npm run start",
+    "start:backend": "cd backend && npm run start",
+    "install:all": "npm install && cd admin && npm install && cd ../frontend && npm install && cd ../backend && npm install && cd ../shared && npm install",
+    "docker:dev": "docker-compose -f docker/docker-compose.dev.yml up",
+    "docker:prod": "docker-compose -f docker/docker-compose.prod.yml up",
+    "test": "npm run test:admin && npm run test:frontend && npm run test:backend",
+    "test:admin": "cd admin && npm run test",
+    "test:frontend": "cd frontend && npm run test",
+    "test:backend": "cd backend && npm run test",
+    "lint": "npm run lint:admin && npm run lint:frontend && npm run lint:backend",
+    "lint:admin": "cd admin && npm run lint",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && npm run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "e-commerce",
+    "admin-dashboard",
+    "nextjs",
+    "express",
+    "postgresql",
+    "redis",
+    "docker",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

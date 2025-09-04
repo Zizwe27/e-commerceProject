@@ -1,0 +1,73 @@
+{
+    "name": "Order",
+    "type": "object",
+    "properties": {
+      "order_id": {
+        "type": "string",
+        "description": "Short, human-readable Order ID like ORD001"
+      },
+      "order_date": {
+        "type": "string",
+        "format": "date",
+        "description": "The date the order was placed"
+      },
+      "customer_name": {
+        "type": "string",
+        "description": "Customer name"
+      },
+      "customer_email": {
+        "type": "string",
+        "description": "Customer email"
+      },
+      "total_amount": {
+        "type": "number",
+        "description": "Order total amount"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "pending",
+          "processing",
+          "shipped",
+          "delivered",
+          "cancelled"
+        ],
+        "default": "pending",
+        "description": "Order fulfillment status"
+      },
+      "payment_status": {
+        "type": "string",
+        "enum": [
+          "paid",
+          "pending",
+          "refunded"
+        ],
+        "default": "pending",
+        "description": "Order payment status"
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "product_name": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            },
+            "price": {
+              "type": "number"
+            }
+          }
+        },
+        "description": "Order items"
+      }
+    },
+    "required": [
+      "order_id",
+      "order_date",
+      "customer_name",
+      "total_amount"
+    ]
+  }

@@ -1,127 +1,219 @@
-## Collaboration Guidelines
+# 🛒 E-commerce Platform
 
-We welcome contributions to the **E-commerce Platform Project**! Follow these step-by-step instructions to contribute:
+A full-stack, enterprise-grade e-commerce platform built with modern technologies for scalability, performance, and maintainability.
 
----
+## 🏗️ Architecture
 
-### 1. Fork the Repository
+This project is organized into three main components:
 
-- Go to the [main repository](https://github.com/Zizwe27/e-commerceProject) on GitHub.
-- Click the **Fork** button (top right of the page).
-- This creates a copy of the repository under your GitHub account.
+- **📊 Admin Dashboard** - Management interface for store owners
+- **🛍️ Frontend** - Customer-facing e-commerce website  
+- **⚡ Backend** - Scalable API server with database
 
----
+## 📁 Project Structure
 
-### 2. Clone Your Fork Locally
-
-- On your forked repo page, click the **Code** button and copy the URL (HTTPS or SSH).
-- Open your terminal and run:
-
-```bash
-git clone https://github.com/<your-username>/e-commerceProject.git
-cd e-commerceProject
+```
+e-commerceProject/
+├── 📁 admin/                    # Admin Dashboard (Next.js)
+├── 📁 frontend/                 # Customer Frontend (Next.js)
+├── 📁 backend/                  # API Server (Express.js)
+├── 📁 shared/                   # Shared utilities & types
+├── 📁 docker/                   # Docker configurations
+└── 📁 docs/                     # Documentation
 ```
 
----
+## 🚀 Quick Start
 
-### 3. Configure the Main Repository as `upstream`
+### Prerequisites
 
-This allows you to keep your fork up to date with the original repository.
+- Node.js 18+ 
+- Docker & Docker Compose
+- PostgreSQL (or use Docker)
+- Redis (or use Docker)
 
+### Development Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd e-commerceProject
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm run install:all
+   ```
+
+3. **Start development environment**
+   ```bash
+   # Using Docker (Recommended)
+   npm run docker:dev
+   
+   # Or manually
+   npm run dev
+   ```
+
+4. **Access the applications**
+   - Admin Dashboard: http://localhost:3002
+   - Customer Frontend: http://localhost:3001
+   - Backend API: http://localhost:3000
+
+## 🛠️ Technology Stack
+
+### Frontend (Admin & Customer)
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Animations
+- **Recharts** - Data visualization
+
+### Backend
+- **Express.js** - Web framework
+- **PostgreSQL** - Primary database
+- **Redis** - Caching & sessions
+- **Prisma** - Database ORM
+- **JWT** - Authentication
+- **Zod** - Data validation
+
+### Infrastructure
+- **Docker** - Containerization
+- **Nginx** - Load balancing & reverse proxy
+- **AWS/DigitalOcean** - Cloud deployment
+
+## 📋 Available Scripts
+
+### Root Level
 ```bash
-git remote add upstream https://github.com/Zizwe27/e-commerceProject.git
+npm run dev              # Start all services in development
+npm run build            # Build all services
+npm run start            # Start all services in production
+npm run install:all      # Install dependencies for all services
+npm run docker:dev       # Start development with Docker
+npm run docker:prod      # Start production with Docker
 ```
 
----
-
-### 4. Create a New Branch
-
-- Always create a branch for your feature or fix.
-- Branch names should be descriptive, like `feature/user-profile` or `bugfix/fix-cart-total`.
-
+### Individual Services
 ```bash
-git checkout -b feature/your-feature-name
+# Admin Dashboard
+npm run dev:admin        # Start admin dashboard
+npm run build:admin      # Build admin dashboard
+
+# Customer Frontend  
+npm run dev:frontend     # Start customer frontend
+npm run build:frontend   # Build customer frontend
+
+# Backend API
+npm run dev:backend      # Start backend API
+npm run build:backend    # Build backend API
 ```
 
----
+## 🗄️ Database Setup
 
-### 5. Make Your Changes
-
-- Edit/add code, documentation, or tests as needed.
-- Follow the project's coding guidelines and standards.
-
----
-
-### 6. Commit Your Changes
-
-- Stage your changes:
-
+### Using Docker (Recommended)
 ```bash
-git add .
+npm run docker:dev
 ```
 
-- Commit with a descriptive message:
-
+### Manual Setup
 ```bash
-git commit -m "Add feature for user profile management"
+# Start PostgreSQL and Redis
+docker-compose -f docker/docker-compose.dev.yml up postgres redis
+
+# Run database migrations
+cd backend
+npm run db:migrate
+
+# Seed the database
+npm run db:seed
 ```
 
----
+## 🔐 Environment Variables
 
-### 7. Keep Your Branch Up to Date (Recommended)
+Create `.env` files in each service directory:
 
-- Before pushing, sync with the latest changes from the main repository:
-
-```bash
-git fetch upstream
-git checkout main
-git pull upstream main
-git checkout feature/your-feature-name
-git rebase main
+### Backend (.env)
+```env
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/ecommerce_dev"
+REDIS_URL="redis://localhost:6379"
+JWT_SECRET="your-jwt-secret-key"
+NODE_ENV="development"
+PORT=3000
 ```
 
----
-
-### 8. Push Your Branch to Your Fork
-
-```bash
-git push origin feature/your-feature-name
+### Admin (.env.local)
+```env
+NEXT_PUBLIC_API_URL="http://localhost:3000"
+NEXTAUTH_URL="http://localhost:3002"
+NEXTAUTH_SECRET="your-nextauth-secret"
 ```
 
+### Frontend (.env.local)
+```env
+NEXT_PUBLIC_API_URL="http://localhost:3000"
+NEXTAUTH_URL="http://localhost:3001"
+NEXTAUTH_SECRET="your-nextauth-secret"
+```
+
+## 🚀 Deployment
+
+### Production with Docker
+```bash
+# Set environment variables
+export POSTGRES_DB="ecommerce_prod"
+export POSTGRES_USER="postgres"
+export POSTGRES_PASSWORD="secure-password"
+export JWT_SECRET="your-production-jwt-secret"
+
+# Start production environment
+npm run docker:prod
+```
+
+### Cloud Deployment
+- **Vercel** - For frontend applications
+- **AWS ECS** - For containerized backend
+- **AWS RDS** - For managed PostgreSQL
+- **AWS ElastiCache** - For managed Redis
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+npm run test
+
+# Run tests for specific service
+npm run test:admin
+npm run test:frontend
+npm run test:backend
+
+# Run tests with coverage
+npm run test:coverage
+```
+
+## 📚 Documentation
+
+- [API Documentation](docs/api/)
+- [Deployment Guide](docs/deployment/)
+- [Contributing Guidelines](CONTRIBUTING.md)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+For support and questions:
+- Create an issue in the repository
+- Check the documentation
+- Contact the development team
+
 ---
 
-### 9. Create a Pull Request
-
-- Go to your forked repository on GitHub.
-- You should see a **Compare & pull request** button — click it.
-- Fill out the PR form with:
-  - **A clear title**
-  - **A detailed description** of your changes and motivation
-  - **Any related issue numbers** (e.g., `Closes #42`)
-- Submit the pull request.
-
----
-
-### 10. Respond to Review
-
-- Make any requested changes and push updates to your branch. Your PR will update automatically.
-
----
-
-### 11. Pull Request Merging
-
-- Once approved, your pull request will be merged.
-
----
-
-**Tips for Successful Collaboration:**
-- Keep your changes focused and atomic (one feature or fix per branch/PR).
-- Reference issues in your pull request for context.
-- Run tests before submitting.
-- Be responsive to feedback.
-
-Thank you for helping improve this project!
-
-
-
-
+**Built with ❤️ for scalable e-commerce solutions**

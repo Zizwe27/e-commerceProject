@@ -1,0 +1,81 @@
+{
+    "name": "DiscountCampaign",
+    "type": "object",
+    "properties": {
+      "campaign_name": {
+        "type": "string",
+        "description": "Name of the discount campaign"
+      },
+      "campaign_code": {
+        "type": "string",
+        "description": "Discount code customers will use"
+      },
+      "discount_type": {
+        "type": "string",
+        "enum": [
+          "percentage",
+          "fixed_amount"
+        ],
+        "description": "Type of discount"
+      },
+      "discount_value": {
+        "type": "number",
+        "description": "Discount value (percentage or ZMW amount)"
+      },
+      "minimum_purchase": {
+        "type": "number",
+        "default": 0,
+        "description": "Minimum purchase amount required in ZMW"
+      },
+      "customer_eligibility": {
+        "type": "string",
+        "enum": [
+          "all_customers",
+          "specific_segments",
+          "specific_customers"
+        ],
+        "default": "all_customers"
+      },
+      "usage_limit": {
+        "type": "integer",
+        "description": "Maximum number of times discount can be used"
+      },
+      "usage_per_customer": {
+        "type": "integer",
+        "default": 1,
+        "description": "Maximum uses per customer"
+      },
+      "start_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "end_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "is_active": {
+        "type": "boolean",
+        "default": true
+      },
+      "applicable_categories": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Product categories this discount applies to"
+      },
+      "combinable_with": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Other discounts this can combine with"
+      }
+    },
+    "required": [
+      "campaign_name",
+      "campaign_code",
+      "discount_type",
+      "discount_value"
+    ]
+  }

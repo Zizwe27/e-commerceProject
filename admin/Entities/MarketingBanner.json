@@ -1,0 +1,55 @@
+{
+    "name": "MarketingBanner",
+    "type": "object",
+    "properties": {
+      "banner_name": {
+        "type": "string",
+        "description": "Name of the marketing banner"
+      },
+      "banner_type": {
+        "type": "string",
+        "enum": [
+          "promotion",
+          "seasonal",
+          "new_product",
+          "sale"
+        ],
+        "description": "Type of banner"
+      },
+      "image_url": {
+        "type": "string",
+        "description": "URL of the banner image"
+      },
+      "title": {
+        "type": "string",
+        "description": "Banner title text"
+      },
+      "description": {
+        "type": "string",
+        "description": "Banner description"
+      },
+      "cta_text": {
+        "type": "string",
+        "default": "Shop Now",
+        "description": "Call to action button text"
+      },
+      "target_url": {
+        "type": "string",
+        "description": "URL banner should link to"
+      },
+      "is_active": {
+        "type": "boolean",
+        "default": true
+      },
+      "display_order": {
+        "type": "integer",
+        "default": 1,
+        "description": "Order in which banners are displayed"
+      }
+    },
+    "required": [
+      "banner_name",
+      "banner_type",
+      "title"
+    ]
+  }

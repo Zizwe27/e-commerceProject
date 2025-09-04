@@ -1,0 +1,31 @@
+{
+    "name": "PayoutAccount",
+    "type": "object",
+    "properties": {
+      "user_id": {
+        "type": "string"
+      },
+      "bank_name": {
+        "type": "string",
+        "description": "e.g., ZANACO, FNB Zambia, Stanbic Bank"
+      },
+      "account_number": {
+        "type": "string"
+      },
+      "account_holder_name": {
+        "type": "string"
+      },
+      "branch_code": {
+        "type": "string"
+      },
+      "is_default": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "bank_name",
+      "account_number",
+      "account_holder_name"
+    ]
+  }

@@ -1,0 +1,48 @@
+{
+    "name": "Transaction",
+    "type": "object",
+    "properties": {
+      "transaction_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "sale",
+          "withdrawal",
+          "fee",
+          "refund",
+          "payout"
+        ]
+      },
+      "description": {
+        "type": "string"
+      },
+      "amount": {
+        "type": "number",
+        "description": "Transaction amount in ZMW. Negative for debits."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "pending",
+          "refunded",
+          "failed"
+        ],
+        "default": "completed"
+      },
+      "related_order_id": {
+        "type": "string",
+        "description": "Link to the original order if applicable"
+      }
+    },
+    "required": [
+      "transaction_date",
+      "type",
+      "description",
+      "amount",
+      "status"
+    ]
+  }

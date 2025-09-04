@@ -1,0 +1,36 @@
+{
+    "name": "ConversionEvent",
+    "type": "object",
+    "properties": {
+      "order_id": {
+        "type": "string"
+      },
+      "product_name": {
+        "type": "string"
+      },
+      "refund_amount": {
+        "type": "number",
+        "default": 0
+      },
+      "event_type": {
+        "type": "string",
+        "enum": [
+          "newsletter_signup",
+          "app_download",
+          "product_review",
+          "referral",
+          "first_purchase"
+        ]
+      },
+      "event_date": {
+        "type": "string",
+        "format": "date"
+      }
+    },
+    "required": [
+      "order_id",
+      "product_name",
+      "event_type",
+      "event_date"
+    ]
+  }

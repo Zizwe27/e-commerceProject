@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: ecommerce-postgres-dev
+    environment:
+      POSTGRES_DB: ecommerce_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - ecommerce-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: ecommerce-redis-dev
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - ecommerce-network
+
+  # Backend API
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile.dev
+    container_name: ecommerce-backend-dev
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/ecommerce_dev
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=your-jwt-secret-key
+      - PORT=3001
+    volumes:
+      - ../backend:/app
+      - /app/node_modules
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - ecommerce-network
+
+  # Admin Dashboard
+  admin:
+    build:
+      context: ../admin
+      dockerfile: Dockerfile.dev
+    container_name: ecommerce-admin-dev
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    volumes:
+      - ../admin:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - ecommerce-network
+
+  # Frontend (Customer-facing)
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile.dev
+    container_name: ecommerce-frontend-dev
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - ecommerce-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  ecommerce-network:
+    driver: bridge
